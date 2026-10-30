@@ -98,21 +98,51 @@ MATLAB Analysis checks the configured conditions and sends alert requests throug
 
 **Note:** Email alerts are handled by the cloud-side MATLAB and Alerts API workflow, not directly by the ESP32 firmware.
 
+## ThingSpeak MATLAB Analysis
+
+The project includes MATLAB scripts for sending email notifications through the ThingSpeak Alerts API.
+
+### MATLAB Alert Scripts
+
+| File | Description | Alert Threshold |
+|---|---|---|
+| `temperature_alert.m` | Sends a high-temperature email notification | Temperature > 35°C |
+| `humidity_alert.m` | Sends a high-humidity email notification | Humidity > 70% |
+
+### Alert Workflow
+
+1. ESP32 uploads temperature and humidity readings to ThingSpeak.
+2. ThingSpeak React triggers the configured cloud-side analysis when the relevant conditions are met.
+3. MATLAB scripts send email notification requests through the ThingSpeak Alerts API.
+4. The user receives an email notification when an alert is triggered.
+
+### Configuration
+
+- ThingSpeak Alerts API endpoint: `https://api.thingspeak.com/alerts/send`
+- Configure your own Alerts API key in the MATLAB scripts.
+- Replace the placeholder `YOUR_ALERTS_API_KEY` with your private key locally.
+- Never upload actual API keys to GitHub.
+
+### Source Files
+
+- `thingspeak/matlab_analysis/temperature_alert.m`
+- `thingspeak/matlab_analysis/humidity_alert.m`
+
+**Note:** The MATLAB scripts send notifications when executed. Threshold detection and triggering are configured separately in the ThingSpeak workflow.
+
 ## Repository Structure
 
 ```text
 IoT-Based-Weather-Station/
-│
 ├── README.md
 ├── .gitignore
 ├── IOT_BASED_WEATHER_STATION.ino
-│
+├── thingspeak/
+│   └── matlab_analysis/
+│       ├── temperature_alert.m
+│       └── humidity_alert.m
 ├── documentation/
-│   ├── IoT-BASED_WEATHER_STATION.pdf
-│   └── ESP32_Source_Code.pdf
-│
 └── screenshots/
-    └── IoT-BASED_WEATHER_STATION_IMG.pdf
 ```
 
 The reference PDF `4844301-IOT_Mini_Project.pdf` is intentionally excluded.
