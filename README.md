@@ -41,6 +41,23 @@ An IoT-based weather monitoring project that measures temperature and relative h
 | NC | Not connected |
 | GND | GND |
 
+## Wokwi Simulation
+
+The ESP32 and DHT22 circuit was developed and tested using the Wokwi online simulator.
+
+**[Open Live Wokwi Simulation](https://wokwi.com/projects/479319113991094273)**
+
+### Simulation Components
+- ESP32 DevKit C V4
+- DHT22 Temperature and Humidity Sensor
+
+### Connections
+- DHT22 VCC → ESP32 3V3
+- DHT22 DATA → ESP32 GPIO 15
+- DHT22 GND → ESP32 GND
+
+The simulation demonstrates sensor readings, ESP32 Wi-Fi connectivity, and ThingSpeak cloud data uploads.
+
 ## Technologies Used
 
 - Arduino C++
@@ -142,6 +159,9 @@ IoT-Based-Weather-Station/
 │       ├── temperature_alert.m
 │       └── humidity_alert.m
 ├── documentation/
+├──wokwi/
+|  ├── diagram.json
+|  └── README.md
 └── screenshots/
 ```
 
